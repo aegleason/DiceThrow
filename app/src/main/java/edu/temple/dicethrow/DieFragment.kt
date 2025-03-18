@@ -39,9 +39,12 @@ class DieFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        throwDie()
-        view.setOnClickListener{
+
+        if (savedInstanceState == null)
             throwDie()
+        else {
+            currentRoll = savedInstanceState.getInt(PREVIOUS_ROLL)
+            dieTextView.text = savedInstanceState.getInt(PREVIOUS_ROLL).toString()
         }
     }
 
